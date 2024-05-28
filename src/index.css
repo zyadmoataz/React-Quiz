@@ -1,11 +1,12 @@
 :root {
-  --color-darkest: #343a40;
-  --color-dark: #495057;
-  --color-medium: #ced4da;
-  --color-light: #f1f3f5;
-
+  --color-light: #EEF7FF;
+  --color-medium: #4D869C;
+  --color-dark: #23323f;
+  --color-darkest: #4D869C;
   --color-theme: #1098ad;
-  --color-accent: #ffa94d;
+  --color-accent: #ffffff;
+  --color-select: rgb(122, 178, 178);
+  --color-wrong: #EEF7FF;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Codystar&display=swap");
@@ -25,8 +26,8 @@ html {
 body {
   min-height: 100vh;
   color: var(--color-light);
-  background-color: var(--color-darkest);
-  padding: 3.2rem;
+  background: linear-gradient(to bottom, var(--color-darkest), var(--color-theme));
+  padding: 3rem;
 }
 
 .app {
@@ -37,15 +38,18 @@ body {
 }
 
 .main {
-  width: 50rem;
+  width: 50%;
+  max-width: 1200px;
 }
 
 .app-header {
-  width: 66rem;
+  width: 100%;
+  max-width: 85rem;
   margin-bottom: 4rem;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
+
 }
 
 .error {
@@ -54,33 +58,36 @@ body {
   font-weight: 500;
   padding: 2rem;
   background-color: #495057;
-  border-radius: 100px;
+  border-radius: 10px;
 }
 
 img {
-  width: 14rem;
+  width: 15rem;
 }
 
 h1 {
   font-family: "Codystar";
   font-size: 5.6rem;
+  color: var(--color-light);
 }
 
 h2 {
   font-size: 3.6rem;
   margin-bottom: 2rem;
+  color: var(--color-dark);
 }
 
 h3 {
   font-size: 2.4rem;
+  color: var(--color-dark);
   font-weight: 600;
   margin-bottom: 4rem;
 }
 
 h4 {
-  font-size: 2.2rem;
-  font-weight: 600;
-  margin-bottom: 2.4rem;
+  font-size: 2.5rem;
+  margin-bottom: 2.5rem;
+  color: var(--color-dark);
 }
 
 .start {
@@ -93,26 +100,25 @@ h4 {
   margin-bottom: 4rem;
   display: grid;
   justify-content: space-between;
-  gap: 1.2rem;
+  gap: 1.5rem;
   grid-template-columns: auto auto;
-  font-size: 1.8rem;
-  color: var(--color-medium);
+  font-size: 2rem;
 }
 
 progress {
   -webkit-appearance: none;
   width: 100%;
-  height: 12px;
+  height: 1rem;
   grid-column: 1 / -1;
 }
 
 ::-webkit-progress-bar {
-  background-color: var(--color-medium);
+  background-color: var(--color-accent);
   border-radius: 100px;
 }
 
 ::-webkit-progress-value {
-  background-color: var(--color-theme);
+  background-color: var(--color-dark);
   border-radius: 100px;
 }
 
@@ -121,20 +127,30 @@ progress {
   font-family: inherit;
   color: inherit;
   font-size: 2rem;
-  border: 2px solid var(--color-dark);
-  background-color: var(--color-dark);
+  border: 2px solid var(--color-light);
+  background-color: var(--color-light);
+  color: var(--color-dark);
   padding: 1.2rem 2.4rem;
   cursor: pointer;
   border-radius: 100px;
-  transition: 0.3s;
+  transition: all 0.3s;
 }
 
 .btn:not([disabled]):hover {
-  background-color: var(--color-darkest);
+  color: var(--color-light);
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
+  transform: scale(1.1);
+}
+
+.btn:not([disabled]):active {
+  background-color: var(--color-medium);
+  border-color: var(--color-medium);
+  transform: scale(0.95);
 }
 
 .btn-option:not([disabled]):hover {
-  transform: translateX(1.2rem);
+  transform: translateX(3rem);
 }
 
 .btn[disabled]:hover {
@@ -143,56 +159,65 @@ progress {
 
 .btn-ui {
   float: right;
+  margin-top: 3rem;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  border-color: var(--color-dark);
 }
 
 .options {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  margin-bottom: 3.2rem;
+  gap: 1.5rem;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .btn-option {
   width: 100%;
   text-align: left;
+  border-color: var(--color-medium);
 }
 
 .btn-option.correct {
-  background-color: var(--color-theme);
-  border: 2px solid var(--color-theme);
+  background-color: var(--color-select);
+  border: 2px solid var(--color-select);
   color: var(--color-light);
-}
-
-.btn-option.wrong {
-  background-color: var(--color-accent);
-  border: 2px solid var(--color-accent);
-  color: var(--color-darkest);
+  box-shadow: 0 5px 10px rgba(122, 178, 178, 0.2);
+  transform: scale(1.05);
+  transform: translateX(3rem);
 }
 
 .answer {
-  transform: translateX(2rem);
+  color: var(--color-light);
+  border: 2px solid var(--color-dark);
+  background-color: var(--color-dark);
 }
 
 .result {
-  background-color: var(--color-theme);
+  border: 1px solid var(--color-light);
+  box-shadow: 0 5px 10px rgba(122, 178, 178, 0.2);
+  background-color: var(--color-select);
   color: var(--color-light);
-  border-radius: 100px;
+  border-radius: 10px;
   text-align: center;
-  padding: 2rem 0;
-  font-size: 2rem;
+  padding: 2rem;
+  font-size: 3rem;
   font-weight: 500;
   margin-bottom: 1.6rem;
 }
 
 .result span {
-  font-size: 2.2rem;
-  margin-right: 4px;
+  font-size: 3.5rem;
+  margin-right: 1rem;
 }
 
 .highscore {
-  font-size: 1.8rem;
+  font-size: 2rem;
   text-align: center;
-  margin-bottom: 4.8rem;
+  margin-bottom: 5rem;
+  color: var(--color-dark);
+  font-weight: 700;
 }
 
 .loader-container {
@@ -201,18 +226,18 @@ progress {
   align-items: center;
   margin-top: 4rem;
   gap: 1.6rem;
-
   color: var(--color-medium);
   font-size: 1.4rem;
 }
 
 .timer {
+  margin-top: 3rem;
   float: left;
   font-size: 1.8rem;
-  color: var(--color-medium);
-  border: 2px solid var(--color-dark);
+  color: var(--color-light);
+  border: 2px solid var(--color-light);
   padding: 1.35rem 2.8rem;
-  border-radius: 100px;
+  border-radius: 10rem;
 }
 
 /* CREDIT: https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
@@ -245,19 +270,159 @@ progress {
   }
 }
 
-/* ********** */
-/* First counter example */
-.counter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 6rem;
+/* Responsive Styles */
+@media (max-width: 1200px) {
+
+  .main {
+    width: 90%;
+  }
+
+  .app-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  img {
+    width: 10rem;
+  }
+
+  h1 {
+    font-size: 4.5rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  h4 {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    font-size: 1.8rem;
+    padding: 0.8rem 1.6rem;
+  }
+
+  .timer {
+    font-size: 1.6rem;
+    padding: 0.8rem 1.6rem;
+  }
+
+  .result {
+    font-size: 1.8rem;
+    padding: 1rem;
+  }
+
+  .result span {
+    font-size: 2rem;
+  }
 }
 
-.counter * {
-  font-size: inherit;
-  padding: 0.8rem;
+@media (max-width: 768px) {
+  .main {
+    width: 90%;
+  }
+
+  .app-header {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+  }
+
+  h4 {
+    font-size: 1.6rem;
+  }
+
+  .btn {
+    font-size: 1.6rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .timer {
+    font-size: 1.4rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .result {
+    font-size: 1.6rem;
+    padding: 0.8rem;
+  }
+
+  .result span {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    width: 100%;
+  }
+
+  .app-header {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+  }
+
+  h4 {
+    font-size: 1.4rem;
+  }
+
+  .app-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  img {
+    width: 8rem;
+  }
+
+  .btn {
+    font-size: 1.4rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .timer {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .result {
+    font-size: 1.4rem;
+    padding: 0.6rem;
+  }
+
+  .result span {
+    font-size: 1.6rem;
+  }
 }
