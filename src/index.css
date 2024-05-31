@@ -38,14 +38,14 @@ body {
 }
 
 .main {
-  width: 50%;
+  width: 60%;
   max-width: 1200px;
 }
 
 .app-header {
   width: 100%;
-  max-width: 75rem;
-  margin-bottom: 4rem;
+  max-width: 68rem;
+  margin-bottom: 3rem;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -62,12 +62,12 @@ body {
 }
 
 img {
-  width: 13rem;
+  width: 12rem;
 }
 
 h1 {
   font-family: "Codystar";
-  font-size: 5rem;
+  font-size: 4.5rem;
   color: var(--color-light);
 }
 
